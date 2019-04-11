@@ -1,0 +1,9 @@
+venv
+data/music/*.mp3
+data/music/*.m4a
+data/music/*.wav
+data/story/*.m4a
+data/story/*.mp3
+data/story/*.wav
+data/audio/machine/*.mp3
+data/config.conf

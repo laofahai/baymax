@@ -1,0 +1,18 @@
+[core]
+debug = 1
+
+[baiduSpeach]
+APP_ID = 百度语音 APP_ID
+API_KEY = 百度语音 API_KEY
+SECRET_KEY = 百度语音 SECRET_KEY
+
+[UNIT]
+CLIENT_ID = 百度 UNIT API_KEY
+CLIENT_SECRET = 百度 UNIT SECRET_KEY
+
+[turing]
+API_KEY = 图灵 API_KEY
+
+[ximalaya]
+ALBUM_ID = 喜马拉雅 album id 用于故事播放
+LATEST_INDEX = 0
