@@ -1,7 +1,7 @@
 from base.organ import OrganBase
 from utils.servo import ServoControl
 
-class ArmBase(OrganBase):
+class ServoBase(OrganBase):
 
     def servoMove(self, channel, angle, timeSleep = .5):
         ServoControl.moveToAngle(channel, angle, timeSleep)

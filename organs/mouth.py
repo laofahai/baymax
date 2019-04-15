@@ -11,10 +11,9 @@ class Mouth(OrganBase):
         while True:
             self.writeEvent.wait()
             if self.writeEvent.target == "Mouth":
-
                 # 取出队列所有
-                for i in range(1, self.selfWorkQueue.qsize()):
-                    data = self.selfWorkQueue.get()
+                for i in range(self.selfWorkQueue.qsize()):
+                    data = self.selfWorkQueue.get_nowait()
                     if "data" in data:
                         getattr(self, data["type"])(data["data"])
                     else:

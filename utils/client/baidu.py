@@ -9,7 +9,7 @@ class Baidu:
 
     devPid = 1537
 
-    speed = 4
+    speed = 3
     per = 1
     pit = 0
     vol = 10

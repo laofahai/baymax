@@ -3,6 +3,7 @@ import numpy
 import wave
 import time
 from utils.sound import Sound
+from utils import light
 
 class Recorder:
 
@@ -11,7 +12,7 @@ class Recorder:
     # weight: 录音触发阈值， 数字越大需要音量越大
     # maxDownSum: 无声音后停止， 数字越大时间越长
     @staticmethod
-    def startRecord(weight = 7000, maxDownSum = 15):
+    def startRecord(weight = 5000, maxDownSum = 15):
         CHUNK = 320  #每次读取的音频流长度
         FORMAT = pyaudio.paInt16  #格式
         CHANNELS = 1  #声道
@@ -48,6 +49,7 @@ class Recorder:
             # print("temp>weight", numpy.max(audio_data), weight, len(frames))
             if (i > 5 and isLargeVoice) or len(frames) > 0:
                 print("recording... ")
+                # light.open(21)
                 if len(frames) <= 0:
                     frames.append(latestData)
                 frames.append(data)
@@ -56,7 +58,8 @@ class Recorder:
                 else:
                     downSum = 0
 
-                if downSum > 20:
+                if downSum > 50:
+                    # light.close(21)
                     break
 
             latestData = data

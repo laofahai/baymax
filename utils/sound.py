@@ -15,10 +15,14 @@ class Sound:
     currentPlayIndex = 0
 
     @staticmethod
+    def init():
+        pygame.mixer.init()
+        pygame.mixer.music.set_volume(.3)
+
+    @staticmethod
     def play(file, isSong = False):
         if not Sound.inited:
-            pygame.mixer.init()
-            pygame.mixer.music.set_volume(.3)
+            Sound.init()
 
         Sound.isSong = isSong
 
@@ -105,7 +109,7 @@ class Sound:
     @staticmethod
     def isBusy():
         if not Sound.inited:
-            pygame.mixer.init()
+            Sound.init()
         return pygame.mixer.music.get_busy()
 
     @staticmethod

@@ -23,6 +23,7 @@ class ServoControl:
         ServoControl.inited = True
         # ServoControl.pulse_length = 1000000 // 50 // 4096
         ServoControl.pulse_length = 4
+        print(Adafruit_PCA9685.PCA9685())
         ServoControl.pwm = Adafruit_PCA9685.PCA9685()
         ServoControl.pwm.set_pwm_freq(60)
 

@@ -8,6 +8,9 @@ from utils.servo import ServoControl
 from utils import scaffolds
 from organs.brain import Brain
 from base.event import EventBase
+import RPi.GPIO as GPIO
+
+# GPIO.setmode(GPIO.BCM)
 
 class Baymax:
 
@@ -29,7 +32,7 @@ class Baymax:
 
         organs = scaffolds.get_modules("organs")
         for organName in organs:
-            if organName == ".brain" or organName == ".abilities" :
+            if organName == ".brain" or organName == ".abilities":
                 continue
 
             organModule = importlib.import_module(organName, "organs")
@@ -60,7 +63,6 @@ class Baymax:
         self.organs["Mouth"].speak("你好，我是大白，是你的私人健康顾问")
         self.sleeping = False
 
-    # @todo 休眠后 除大脑和耳朵之外 所有器官是否需要进入休眠
     def sleep(self):
         self.sleeping = True
 
@@ -78,60 +80,18 @@ class Baymax:
     def isSleeping(self):
         return self.sleeping
 
+    @staticmethod
+    def powerOn():
+
+        baymax = Baymax()
+        baymax.wakeup()
+
+        baymax.brain.thinkAboutSentence("摇头")
+
+        while True:
+            pass
+
 if __name__ == "__main__":
 
-    # ServoControl.moveToAngle(15, 0)
-    # ServoControl.moveToAngle(15, 180)
-    # ServoControl.moveToAngle(15, 0)
-    # ServoControl.moveToAngle(15, 180)
-    # ServoControl.moveToAngle(15, 0)
-    #
-    # ServoControl.moveToAngle(14, 0)
-    # ServoControl.moveToAngle(14, 180)
-    # ServoControl.moveToAngle(14, 0)
-    # ServoControl.moveToAngle(14, 180)
-    # ServoControl.moveToAngle(14, 0)
-    #
-    # ServoControl.moveToAngle(13, 0)
-    # ServoControl.moveToAngle(13, 180)
-    # ServoControl.moveToAngle(13, 0)
-    # ServoControl.moveToAngle(13, 180)
-    # ServoControl.moveToAngle(13, 0)
-
-    baymax = Baymax()
-    baymax.wakeup()
-
-    # time.sleep(5)
-    # baymax.brain.thinkAboutSentence("碰个拳")
-    #
-    # time.sleep(10)
-    #
-    # baymax.brain.thinkAboutSentence("我想听故事")
-
-    while True:
-        pass
-
-    # baymax.brain.thinkAboutSentence("我想听杨超越的卡路里")
-
-
-
-    # from utils.songDownloader import SongDownloader
-    # from utils.sound import Sound
-    #
-    # Sound.playSong("卡路里")
-    #
-    # time.sleep(2)
-    # Sound.pause()
-    #
-    # time.sleep(2)
-    # Sound.unpause()
-    #
-    # time.sleep(2)
-    # Sound.playNext()
-    #
-    # time.sleep(2)
-    # Sound.playPrevious()
-    #
-    # time.sleep(2)
-    # Sound.stop()
+    Baymax.powerOn()
 
