@@ -17,7 +17,7 @@ class Sound:
     @staticmethod
     def init():
         pygame.mixer.init()
-        pygame.mixer.music.set_volume(.3)
+        pygame.mixer.music.set_volume(.4)
 
     @staticmethod
     def play(file, isSong = False):
